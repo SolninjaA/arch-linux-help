@@ -4,9 +4,11 @@ Run `sysctl kernel.unprivileged_userns_clone=1` in the terminal. You may have to
 
 `sudo sysctl kernel.unprivileged_userns_clone=1`
 
-Note: you would have to run this command every time you turn on your computer (at least in my experience). You could try adding `exec sysctl kernel.unprivileged_userns_clone=1` in your `~/.xinitrc` file (I haven't tested this yet), adding `sysctl kernel.unprivileged_userns_clone=1` as a command that runs on startup in your window manager or creating a script that runs on startup.
+Note: you would have to run this command every time you turn on your computer (at least in my experience). You could try adding `exec sysctl kernel.unprivileged_userns_clone=1` in your `~/.xinitrc` file (I haven't tested this yet), adding `sysctl kernel.unprivileged_userns_clone=1` as a command that runs on startup in your window manager or <a href=#script> creating a script that runs on startup.</a>
 
-#### How to create a script that runs on startup
+<a id=script>
+  
+#### How to create a script that runs on startup (the way I would do it on a desktop environment)
 1. Run `sudo nano/vim /etc/systemd/system/whatYouWantToCallTheService.service`
 2. Paste the following:
 ```
