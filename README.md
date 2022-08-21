@@ -61,7 +61,8 @@ https://wiki.archlinux.org/title/Xorg#Driver_installation
 Run `sysctl kernel.unprivileged_userns_clone=1` in the terminal. You may have to run it with `sudo`.
 
 `sudo sysctl kernel.unprivileged_userns_clone=1`
-Note: you would have to run this command every time you turn on your computer (at least in my experience). You could try adding `exec sysctl kernel.unprivileged_userns_clone=1`in your `~/.xinitrc` file (this hasn't tested this yet), adding `sysctl kernel.unprivileged_userns_clone=1` as a command that runs on startup in your window manager or creating a script that runs on startup.
+
+Note: you would have to run this command every time you turn on your computer (at least in my experience). You could try adding `exec sysctl kernel.unprivileged_userns_clone=1` in your `~/.xinitrc` file (I haven't tested this yet), adding `sysctl kernel.unprivileged_userns_clone=1` as a command that runs on startup in your window manager or creating a script that runs on startup.
 
 #### How to create a script that runs on startup
 1. Run `sudo nano/vim /etc/systemd/system/whatYouWantToCallTheService.service`
@@ -80,4 +81,5 @@ WantedBy=multi-user.target
 
 #### Sources:
 https://github.com/electron/electron/issues/17972
+
 https://www.linuxuprising.com/2021/12/how-to-run-command-or-script-as-root-on.html
