@@ -64,24 +64,19 @@ Run `sysctl kernel.unprivileged_userns_clone=1` in the terminal. You may have to
 Note: you would have to run this command every time you turn on your computer (at least in my experience). You could try adding `exec sysctl kernel.unprivileged_userns_clone=1`in your `~/.xinitrc` file (this hasn't tested this yet), adding `sysctl kernel.unprivileged_userns_clone=1` as a command that runs on startup in your window manager or creating a script that runs on startup.
 
 #### How to create a script that runs on startup
-First decide where you want to make the script, I will be using `/home/username/kernel_unprivileged.sh`.
-1. Nano / vim `/the/path/that/you/chose.sh`
-2. Add `#!/bin/bash` on the first line
-3. Add `sysctl kernel.unprivileged_userns_clone=1` on the second line
-4. Run `chmod +x /the/path/that/you/chose.sh` (this may need sudo privileges)
-5. Run `sudo nano/vim /etc/systemd/system/whatYouWantToCallTheService.service`
-6. Paste the following:
+1. Run `sudo nano/vim /etc/systemd/system/whatYouWantToCallTheService.service`
+2. Paste the following:
 ```
 [Unit]
 Description=your description
 
 [Service]
-ExecStart=/the/path/that/you/chose.sh
+ExecStart=sysctl kernel.unprivileged_userns_clone=1
 
 [Install]
 WantedBy=multi-user.target
 ```
-7. Run `sudo systemctl enable whatYouWantToCallTheService.service`
+3. Run `sudo systemctl enable whatYouWantToCallTheService.service`
 
 #### Sources:
 https://github.com/electron/electron/issues/17972
