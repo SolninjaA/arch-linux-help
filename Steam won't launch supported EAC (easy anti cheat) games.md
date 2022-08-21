@@ -27,7 +27,7 @@ If using [systemd-networkd](https://wiki.archlinux.org/title/Systemd-networkd) f
 6. Make sure Steam is not open
 7. Run `protonup-qt`
 8. At the top of the GUI where it says "Install for:" click the dropdown and select "Steam Flatpak"
-9. Near the bottom left select "Add version:
+9. Near the bottom left select "Add version:"
 10. Make sure underneath where it says "Compatability tool:" it says "GE-Proton"
 11. Make sure underneath "Version:" it says GE-Proton7-15 (it may work with versions newer than 15, however I tested 15 and it worked for me)
 12. Click "Install"
