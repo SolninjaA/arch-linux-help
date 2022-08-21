@@ -1,7 +1,7 @@
 # Arch / Linux help
 A repository for issues I have come across during my time in Arch Linux, and fixes for them. Granted, veteran Arch / Linux users may find these problems / fixes obvious.
 
-### The issues / fixes have been split to seperate pages. When you see the header to a problem click the hyperlink / link to find the fix.
+### The issues / fixes have been split to seperate pages. When you see the header to a problem click the hyperlink to find the fix.
 
 
 
