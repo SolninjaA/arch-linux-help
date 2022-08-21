@@ -6,7 +6,7 @@ A repository for issues I have come across during my time in Arch Linux, and fix
 
 
 ## Steam won't launch supported EAC (easy anti cheat) games
-### [Steam won't launch supported EAC (easy anti cheat) games.md](https://github.com/SolninjaA/arch-linux-help/edit/main/Steam%20won't%20launch%20supported%20EAC%20(easy%20anti%20cheat)%20games.md)
+### [Steam won't launch supported EAC (easy anti cheat) games.md](https://github.com/SolninjaA/arch-linux-help/blob/main/Steam%20won't%20launch%20supported%20EAC%20(easy%20anti%20cheat)%20games.md)
 
 ## The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that /path/ is owned by root and has mode 4755.
 
