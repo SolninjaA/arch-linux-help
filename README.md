@@ -20,12 +20,12 @@ Install [wqy-zenhei](https://archlinux.org/packages/?name=wqy-zenhei) to add sup
 
 If using [systemd-networkd](https://wiki.archlinux.org/title/Systemd-networkd) for network management, install [lib32-systemd](https://archlinux.org/packages/?name=lib32-systemd) in order for Steam to be able to connect to its servers. (if you use systemd-networkd run `sudo pacman -S lib32-systemd`)
 
-##### Commands (note: the below commands will run through an installation of Fall Guys, the steps should be the same across games):
+##### Commands (note: The below commands will run through an installation of Fall Guys. The steps should be the same across games as long as the game has implemented EAC in a way Steam can handle it. See https://areweanticheatyet.com/):
 
 1. Run `sudo pacman -S flatpak`
 2. Run `flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo`
 3. Run `flatpak --user install flathub com.valvesoftware.Steam`
-4. Run `flatpak run com.valvesoftware.Steam` (if you are having troubles with Asian fonts in game, run `flatpak run --filesystem=~/.local/share/fonts --filesystem=~/.config/fontconfig  com.valvesoftware.Steam`)
+4. Run `flatpak run com.valvesoftware.Steam` (if you are having troubles with Asian fonts in game, try running Steam with `flatpak run --filesystem=~/.local/share/fonts --filesystem=~/.config/fontconfig  com.valvesoftware.Steam`)
 5. Run `paru/yay/aurhelper -S protonup-qt`
 6. Make sure Steam is not open
 7. Run `protonup-qt`
@@ -61,6 +61,28 @@ https://wiki.archlinux.org/title/Xorg#Driver_installation
 Run `sysctl kernel.unprivileged_userns_clone=1` in the terminal. You may have to run it with `sudo`.
 
 `sudo sysctl kernel.unprivileged_userns_clone=1`
+Note: you would have to run this command every time you turn on your computer (at least in my experience). You could try adding `exec sysctl kernel.unprivileged_userns_clone=1`in your `~/.xinitrc` file (this hasn't tested this yet), adding `sysctl kernel.unprivileged_userns_clone=1` as a command that runs on startup in your window manager or creating a script that runs on startup.
+
+#### How to create a script that runs on startup
+First decide where you want to make the script, I will be using `/home/username/kernel_unprivileged.sh`.
+1. Nano / vim `/the/path/that/you/chose.sh`
+2. Add `#!/bin/bash` on the first line
+3. Add `sysctl kernel.unprivileged_userns_clone=1` on the second line
+4. Run `chmod +x /the/path/that/you/chose.sh` (this may need sudo privileges)
+5. Run `sudo nano/vim /etc/systemd/system/whatYouWantToCallTheService.service`
+6. Paste the following:
+```
+[Unit]
+Description=your description
+
+[Service]
+ExecStart=/the/path/that/you/chose.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+7. Run `sudo systemctl enable whatYouWantToCallTheService.service`
 
 #### Sources:
 https://github.com/electron/electron/issues/17972
+https://www.linuxuprising.com/2021/12/how-to-run-command-or-script-as-root-on.html
